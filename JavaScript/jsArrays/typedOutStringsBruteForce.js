@@ -1,25 +1,34 @@
-//Q: Given two strings S and T, return if they are equal when both are typed out. Any '#' that appears in the string counts as a backspace
+const string1 = "ab#z"
+const string2 = "az#z"
 
-const typedOutStrings = (S,T) => {
-  var sumT = 0, sumS = 0;
-  for(let i=0; i<S.length; i++) {
-    if(S[i] === "#") {
-      sumS -= 1;
-    } else {sumS += 1 }
+const buildString = function(string) {
+    const builtString = [];
+    for(let p = 0; p < string.length; p++) {
+        if(string[p] !== '#') {
+            builtString.push(string[p]);
+        } else {
+            builtString.pop();
+        }
+    }
     
-  }
-  for(let j=0; j<T.length; j++) {
-    if(T[j] === "#") {
-      sumT -= 1;
-    } else {sumT += 1 }
-  }
-  if(sumT === sumS) {
-    return true;
-  } else {
-    return false;
-  }
-} 
+    return builtString;
+}
 
-S = "abc###ef";
-T = "sm";
-console.log(typedOutStrings(S,T));
+var backspaceCompare = function(S, T) {
+    const finalS = buildString(S);
+    const finalT = buildString(T);
+    
+    if(finalS.length !== finalT.length) {
+        return false
+    } else {
+        for(let p = 0; p < finalS.length; p++) {
+            if(finalS[p] !== finalT[p]) {
+                return false
+            }
+        }
+    }
+    
+    return true;
+};
+
+console.log(backspaceCompare(string1, string2));
