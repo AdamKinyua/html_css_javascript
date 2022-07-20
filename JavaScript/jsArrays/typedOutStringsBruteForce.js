@@ -13,9 +13,13 @@ const typedOutStrings = (S,T) => {
       sumT -= 1;
     } else {sumT += 1 }
   }
-  return [sumT, sumS];
+  if(sumT === sumS) {
+    return true;
+  } else {
+    return false;
+  }
 } 
 
-S = "abc##def";
-T = "smhd";
-console.log(typedOutStrings(S,T))
+S = "abc###ef";
+T = "sm";
+console.log(typedOutStrings(S,T));
