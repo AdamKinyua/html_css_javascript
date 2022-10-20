@@ -15,3 +15,21 @@ function fibonacciGenerator(n) {
 }
 
 fibonacciGenerator(100);
+
+
+function fibbonacci_Seq(n) {
+  seq = [];
+  if(n===1) {
+    seq = [0];
+  } else if(n==2) {
+    seq = [0,1];
+  } else {
+    seq = [0,1]
+    for(var i = 2; i < n; i++) {
+      seq.push(seq[seq.length-2] + seq[seq.length-1])
+    }
+  } return seq;
+}
+
+console.log(fibbonacci_Seq(200))
+
